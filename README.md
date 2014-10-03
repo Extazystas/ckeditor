@@ -117,7 +117,42 @@ app/assets/javascripts/ckeditor/config.js
 
 app/assets/javascripts/ckeditor/contents.css
 ```
+#### To use source dialog plugin (view html source of document)
+config.js file example:
 
+```
+CKEDITOR.editorConfig = function( config )
+{
+    /* Filebrowser routes */
+    // The location of an external file browser, that should be launched when "Browse Server" button is pressed in the Link tab of Image dialog.
+    config.filebrowserImageBrowseLinkUrl = "/ckeditor/pictures";
+
+    // The location of an external file browser, that should be launched when "Browse Server" button is pressed in the Image dialog.
+    config.filebrowserImageBrowseUrl = "/ckeditor/pictures";
+
+    // The location of a script that handles file uploads in the Image dialog.
+    config.filebrowserImageUploadUrl = "/ckeditor/pictures";
+
+    config.toolbar = 'MyToolbar';
+
+    config.toolbar_MyToolbar =
+    [
+        { name: 'document', items : [ 'NewPage','Preview', 'Sourcedialog' ] },
+        { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+        { name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','Scayt' ] },
+        { name: 'insert', items : [ 'Image','Attachment','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'
+                 ,'Iframe' ] },
+                '/',
+        { name: 'styles', items : [ 'Styles','Format' ] },
+        { name: 'basicstyles', items : [ 'Bold','Italic','Strike','-','RemoveFormat' ] },
+        { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote' ] },
+        { name: 'links', items : [ 'Link','Unlink','Anchor' ] },
+        { name: 'tools', items : [ 'Maximize','-','About' ] }
+    ];
+    config.extraPlugins = 'sourcedialog';
+};
+
+```
 ### Usage with Rails 4 assets
 
 In order to use rails 4 assets with digest in production environment you need some preparing.
